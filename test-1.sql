@@ -1,3 +1,3 @@
 SELECT * from country;
 
-SELECT * from country where continent = "Asia";
+SELECT * from country where continent = "Asia" and region = "Southeast Asia";
