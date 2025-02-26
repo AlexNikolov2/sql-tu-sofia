@@ -1,0 +1,1 @@
+delete from coaches where egn = '1234567890'
