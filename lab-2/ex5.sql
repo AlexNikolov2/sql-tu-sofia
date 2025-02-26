@@ -1,0 +1,3 @@
+create table students (id int not null unique auto_increment, name varchar (100), egn varchar(10), address varchar (100), phone varchar (100), class varchar (2));
+
+insert into students (name, egn, address, phone, class) value ('Osman Mehmed', '1234567890', 'Edirne-Turkiye', '2389057928357', '10'), ('Salamcho Kashkavalkov', '0010010010', 'Kirklareli-Turkiye', '420980923502', '9'), ('Alibaba Djonejtpasha', '1010101001', 'Gockeada-Turkiye', '203572039580', '12');
