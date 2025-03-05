@@ -1,0 +1,1 @@
+select location, hourOfTraining, dayOfWeek from sportgroups where sport_id = 2
