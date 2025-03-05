@@ -67,7 +67,6 @@ INSERT INTO repairs (car_id, total_cost)
 VALUES (1, 120.00);
 INSERT INTO repair_services (repair_id, service_id, quantity) 
 VALUES (1, 1, 1);
-VALUES (1, 1, 1);
 INSERT INTO repair_employees (repair_id, employee_id) 
 VALUES (1, 2);
 
