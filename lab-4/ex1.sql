@@ -1,0 +1,1 @@
+(select name, egn from students) union (select name, egn from coaches)
