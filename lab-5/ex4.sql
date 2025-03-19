@@ -1,5 +1,3 @@
-USE school_sport_clubs;
-
 SELECT 
     s1.name AS student_1, 
     s2.name AS student_2, 
