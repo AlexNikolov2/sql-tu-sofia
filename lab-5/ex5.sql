@@ -1,16 +1,5 @@
-CREATE VIEW student_training_info AS
-SELECT 
-    s.name AS student_name,
-    s.class AS student_class,
-    sg.location AS training_location,
-    t.name AS coach_name
-FROM 
-    students s
-JOIN 
-    student_sport ss ON s.id = ss.student_id
-JOIN 
-    sportgroups sg ON ss.sportgroup_id = sg.id
-JOIN 
-    coaches t ON sg.coach_id = t.id
-WHERE 
-    sg.hourOfTraining = '08:00:00';
+create VIEW student_training_info as select s.name as student_name, s.class as student_class, sg.location as training_location, t.name as coach_name from students s
+join student_sport ss on s.id = ss.student_id
+join sportgroups sg on ss.sportgroup_id = sg.id
+join coaches t on sg.coach_id = t.id
+where sg.hourOfTraining = '08:00:00';
