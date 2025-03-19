@@ -1,5 +1,3 @@
-USE school_sport_clubs;
-
 CREATE VIEW student_training_info AS
 SELECT 
     s.name AS student_name,
