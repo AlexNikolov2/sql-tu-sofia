@@ -1,20 +1,32 @@
-USE school_sport_clubs;
+CREATE DATABASE CinemaDB;
+USE CinemaDB;
 
-SELECT 
-    s1.name AS student_1, 
-    s2.name AS student_2, 
-    sg.id AS sportgroup_id
-FROM 
-    student_sport ss1
-JOIN 
-    student_sport ss2 ON ss1.sportgroup_id = ss2.sportgroup_id AND ss1.student_id < ss2.student_id
-JOIN 
-    students s1 ON ss1.student_id = s1.id
-JOIN 
-    students s2 ON ss2.student_id = s2.id
-JOIN 
-    sportgroups sg ON ss1.sportgroup_id = sg.id
-JOIN 
-    sports sp ON sg.sport_id = sp.id
-WHERE 
-    sp.name = 'Football';
+CREATE TABLE Cinemas (
+    cinema_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Halls (
+    hall_id INT PRIMARY KEY AUTO_INCREMENT,
+    cinema_id INT,
+    hall_number INT NOT NULL,
+    status ENUM('Standard', 'VIP', 'Deluxe') NOT NULL,
+    FOREIGN KEY (cinema_id) REFERENCES Cinemas(cinema_id)
+);
+
+CREATE TABLE Movies (
+    movie_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    year INT NOT NULL,
+    country VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Screenings (
+    screening_id INT PRIMARY KEY AUTO_INCREMENT,
+    hall_id INT,
+    movie_id INT,
+    screening_time DATETIME NOT NULL,
+    tickets_sold INT NOT NULL,
+    FOREIGN KEY (hall_id) REFERENCES Halls(hall_id),
+    FOREIGN KEY (movie_id) REFERENCES Movies(movie_id)
+);
