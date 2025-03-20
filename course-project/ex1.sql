@@ -41,3 +41,12 @@ CREATE TABLE FileVersions (
     FOREIGN KEY (file_id) REFERENCES Files(id),
     FOREIGN KEY (commit_id) REFERENCES Commits(id)
 );
+
+CREATE TABLE Branches (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    project_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (project_id) REFERENCES Projects(id),
+    UNIQUE (project_id, name)
+);
