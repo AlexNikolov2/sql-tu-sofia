@@ -19,8 +19,8 @@ CREATE TABLE Commits (
     user_id INT NOT NULL,
     commit_message TEXT NOT NULL,
     commit_hash VARCHAR(40) UNIQUE NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     branch_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (project_id) REFERENCES Projects(id),
     FOREIGN KEY (user_id) REFERENCES Users(id),
     FOREIGN KEY (branch_id) REFERENCES Branches(id)
@@ -30,8 +30,10 @@ CREATE TABLE Files (
     id INT PRIMARY KEY AUTO_INCREMENT,
     project_id INT NOT NULL,
     file_path VARCHAR(255) NOT NULL,
+    branch_id INT NOT NULL
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (project_id) REFERENCES Projects(id)
+    FOREIGN KEY (branch_id) REFERENCES Branches(id)
 );
 
 CREATE TABLE FileVersions (
