@@ -1,0 +1,1 @@
+delete from coaches where id = 1
