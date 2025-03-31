@@ -13,7 +13,7 @@ BEGIN
     JOIN students st ON ss.student_id = st.id
     JOIN coaches c ON sg.coach_id = c.id
     WHERE sp.id = sportId;
-END |
+END
 DELIMITER ;
--- Example query to test the procedure
--- CALL getSportInfo(1);
+
+call getSportInfo(1)
