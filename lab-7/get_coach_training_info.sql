@@ -19,4 +19,4 @@ BEGIN
 END |
 DELIMITER ;
 -- Example query to test the procedure
-CALL getCoachTrainingInfo('Slavi Petkov Petkov');
+CALL getCoachTrainingInfo('georgi Ivanov Todorov');
