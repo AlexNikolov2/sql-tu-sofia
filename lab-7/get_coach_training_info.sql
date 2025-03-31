@@ -18,5 +18,4 @@ BEGIN
     WHERE c.name = coachName;
 END |
 DELIMITER ;
--- Example query to test the procedure
 CALL getCoachTrainingInfo('georgi Ivanov Todorov');
