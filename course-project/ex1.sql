@@ -1,3 +1,6 @@
+create databse 'git_projekt_system';
+use 'git_projekt_system';
+
 CREATE TABLE Developer (
     developer_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
