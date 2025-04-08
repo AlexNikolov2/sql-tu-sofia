@@ -1,20 +1,24 @@
-
-CREATE VIEW TrainerInfo AS
+use school_sport_clubs;
+CREATE OR REPLACE VIEW TrainerInfo AS
 SELECT 
-    t.name AS TrainerName,
-    s.name AS SportName,
-    g.name AS GroupName,
-    SUM(p.amount) AS MonthlyEarnings
+    c.name AS TrainerName,
+    sg.location AS GroupInfo,
+    sp.name AS SportName,
+    tp.month AS Month,
+    tp.year AS Year,
+    SUM(sal.salaryAmount) AS MonthlyEarnings
 FROM 
-    Trainers t
+    coaches c
 JOIN 
-    Sports s ON t.sport_id = s.id
+    sportgroups sg ON c.id = sg.coach_id
 JOIN 
-    Groups g ON t.group_id = g.id
+    sports sp ON sg.sport_id = sp.id
 JOIN 
-    Payments p ON t.id = p.trainer_id
+    salaryPayments sal ON c.id = sal.coach_id
+JOIN 
+    taxesPayments tp ON sg.id = tp.group_id
 WHERE 
-    MONTH(p.payment_date) = MONTH(CURRENT_DATE)
-    AND YEAR(p.payment_date) = YEAR(CURRENT_DATE)
+    tp.month = 5
+    AND tp.year = 2020
 GROUP BY 
-    t.name, s.name, g.name;
+    c.name, sp.name, sg.location, tp.month, tp.year;
