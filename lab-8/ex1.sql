@@ -18,7 +18,7 @@ JOIN
 JOIN 
     taxesPayments tp ON sg.id = tp.group_id
 WHERE 
-    tp.month = 5
-    AND tp.year = 2020
+    tp.month = '5'
+    AND tp.year = 2022
 GROUP BY 
     c.name, sp.name, sg.location, tp.month, tp.year;
