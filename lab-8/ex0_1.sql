@@ -22,12 +22,13 @@ declare countOfCoachesWithoutMonthSalary int;
 
 DECLARE CONTINUE HANDLER FOR SQLEXCEPTION
 SELECT
-    & #39;SQLException occured&#39;;
-    create temporary table tempCoach(
-        id int auto_increment primary key,
-        coach_id int not null,
-        month_salary int not null
-    ) Engine = Memory;
+    'SQLException occured';
+
+create temporary table tempCoach(
+    id int auto_increment primary key,
+    coach_id int not null,
+    month_salary int not null
+) Engine = Memory;
 
 INSERT INTO
     tempCoach(coach_id, month_salary)
@@ -51,12 +52,8 @@ set
     iterator = 1;
 
 WHILE(
-    iterator & gt;
-
-= 1
-AND iterator & lt;
-
-= countOfCoaches
+    iterator >= 1
+    AND iterator <= countOfCoaches
 ) # преброяваме колко са
 треньорите,
 които не са си полчуили заплатата все още.DO
@@ -70,8 +67,7 @@ where
     id = iterator;
 
 SELECT
-    salaryAmount INTO currentCoachSalary #има ли заплата вече преведена за този месец и тази година
-    този треньор
+    salaryAmount INTO currentCoachSalary
 FROM
     salarypayments
 WHERE
@@ -80,9 +76,7 @@ WHERE
     AND `coach_id` = tempCoachId;
 
 IF(
-    IFNULL(currentCoachSalary, 0) & lt;
-
-= tempCoachSalary
+    IFNULL(currentCoachSalary, 0) <= tempCoachSalary
 ) THEN
 SET
     countOfCoachesWithoutMonthSalary = countOfCoachesWithoutMonthSalary + 1;
@@ -94,8 +88,7 @@ SET
 
 end while;
 
-IF(countOfCoachesWithoutMonthSalary = 0) # ако няма треньори, които си чакат превод на
-заплатата THEN drop table tempCoach;
+IF(countOfCoachesWithoutMonthSalary = 0) THEN drop table tempCoach;
 
 set
     success = 0;
@@ -112,12 +105,8 @@ SET
 START TRANSACTION;
 
 WHILE(
-    iterator & gt;
-
-= 1
-AND iterator & lt;
-
-= countOfCoaches
+    iterator >= 1
+    AND iterator <= countOfCoaches
 ) DO
 SELECT
     coach_id,
@@ -129,8 +118,7 @@ where
     id = iterator;
 
 SELECT
-    salaryAmount INTO currentCoachSalary #има ли заплата вече преведена за този месец и тази година
-    този треньор
+    salaryAmount INTO currentCoachSalary
 FROM
     salarypayments
 WHERE
@@ -139,9 +127,7 @@ WHERE
     AND `coach_id` = tempCoachId;
 
 IF(
-    IFNULL(currentCoachSalary, 0) & lt;
-
-tempCoachSalary
+    IFNULL(currentCoachSalary, 0) < tempCoachSalary
 ) THEN
 INSERT INTO
     salarypayments(
@@ -160,8 +146,7 @@ VALUES
         NOW()
     ) ON duplicate key
 update
-    #ако вече хонорарите му са преведени, то към тези пари да се
-    добави и месечната му заплата.salaryAmount = salaryAmount + tempCoachSalary,
+    заплата.salaryAmount = salaryAmount + tempCoachSalary,
     dateOfPayment = NOW();
 
 set
@@ -169,7 +154,8 @@ set
 
 ELSE
 SELECT
-    & #39;The coach has a month salary yet!&#39;;
+    'The coach has a month salary yet!';
+
 END IF;
 
 SET
@@ -179,9 +165,7 @@ end while;
 
 IF(
     countOfCoachesWithoutMonthSalary = updatedSalaryCounter
-) # преведени са
-толкова заплати,
-колкото е трябвало THEN commit;
+) THEN commit;
 
 SET
     success = 1;
