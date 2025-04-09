@@ -1,5 +1,7 @@
 USE school_sport_clubs;
 
+DROP PROCEDURE IF EXISTS ListStudentsAndGroupCount;
+
 DELIMITER |
 CREATE PROCEDURE ListStudentsAndGroupCount()
 BEGIN
