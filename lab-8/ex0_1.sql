@@ -1,6 +1,9 @@
 use school_sport_clubs;
+
 drop procedure if exists monthSalaryPayment;
+
 delimiter |
+
 create procedure monthSalaryPayment(IN monthOfPayment INT, in yearOFpayment INT, OUT
 success bit)
 procLab: begin
@@ -99,6 +102,9 @@ END if;
 END IF;
 end
 |
-DELIMITER ;
-CALL monthSalaryPayment(1, 2023, @success);
+
+DELIMITER;
+
+CALL monthSalaryPayment (1, 2023, @success);
+
 SELECT @success;
