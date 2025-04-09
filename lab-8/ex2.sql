@@ -1,5 +1,6 @@
 USE school_sport_clubs;
 
+DROP PROCEDURE IF EXISTS getStudentsInMultipleGroups;
 DELIMITER |
 CREATE PROCEDURE getStudentsInMultipleGroups()
 BEGIN
