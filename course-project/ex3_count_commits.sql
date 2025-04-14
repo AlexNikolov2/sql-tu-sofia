@@ -1,4 +1,4 @@
---Count each developer's total number of commits
+--Тотален брой комити на всеки разработчик
 
 SELECT name, COUNT(*) AS total_commits
 FROM Commit
