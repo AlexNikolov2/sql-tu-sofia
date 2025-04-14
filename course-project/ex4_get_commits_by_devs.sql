@@ -1,4 +1,4 @@
---show all commits made by developers
+--всички къмити на разработчик
 
 SELECT d.name, c.message
 FROM Developer d
