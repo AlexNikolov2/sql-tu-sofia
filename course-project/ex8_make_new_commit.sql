@@ -1,3 +1,5 @@
+--Тригер, с когото се записва в CommitLog, когато се добави нов commit
+
 CREATE TABLE CommitLog (
     log_id INT AUTO_INCREMENT PRIMARY KEY,
     commit_id INT,
