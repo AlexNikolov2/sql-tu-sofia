@@ -1,3 +1,5 @@
+--show all developers who have made commits to project 1
+
 SELECT name
 FROM Developer
 WHERE developer_id IN (
