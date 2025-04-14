@@ -1,7 +1,8 @@
 CREATE TABLE CommitLog (
     log_id INT AUTO_INCREMENT PRIMARY KEY,
     commit_id INT,
-    log_time DATETIME DEFAULT CURRENT_TIMESTAMP
+    log_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (commit_id) REFERENCES Commit(commit_id)
 );
 
 DELIMITER //
