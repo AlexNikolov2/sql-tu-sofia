@@ -1,3 +1,5 @@
+--Процедура, която извежда file path
+
 DELIMITER //
 CREATE PROCEDURE ListFileChanges()
 BEGIN
