@@ -7,6 +7,10 @@ Please, kill me.
 
 I am using MySQL and MySQL Workbench for the database and the ERD.
 
+# ERD
+
+![ERD](e-r-diagram.png)
+
 # File
 
 Here is the course project documentation.
