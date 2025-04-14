@@ -1,4 +1,4 @@
---show all developers who have made commits to project 1
+--Всички разработчици, които са направили къмит в проект с id 1
 
 SELECT name
 FROM Developer
