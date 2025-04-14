@@ -1,4 +1,4 @@
---CHECK COMMITS BY A GIVEN USER ID
+--Брой къмити/качвания от всеки програмист
 
 use git_projekt_system;
 SELECT d.name, c.*
