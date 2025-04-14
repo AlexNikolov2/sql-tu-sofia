@@ -1,2 +1,3 @@
+use git_projekt_system;
 SELECT * FROM Commit
-WHERE developer_id = 1 AND commit_time > '2024-01-01';
+WHERE developer_id = 2 AND commit_time > '2023-01-01';
