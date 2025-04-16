@@ -1,3 +1,5 @@
+DELIMITER $$
+
 CREATE TRIGGER trg_check_student_groups
 BEFORE INSERT ON student_sport
 FOR EACH ROW
@@ -11,4 +13,6 @@ BEGIN
         SIGNAL SQLSTATE '45000'
         SET MESSAGE_TEXT = 'Ученикът не може да тренира в повече от 2 групи.';
     END IF;
-END;
+END$$
+
+DELIMITER ;
