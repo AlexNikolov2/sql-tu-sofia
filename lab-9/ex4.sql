@@ -1,3 +1,5 @@
+DELIMITER $$
+
 CREATE PROCEDURE get_students_by_coach(IN coach_name VARCHAR(255))
 BEGIN
     SELECT 
@@ -16,4 +18,6 @@ BEGIN
         coaches c ON sg.coach_id = c.id
     WHERE 
         c.name = coach_name;
-END;
+END$$
+
+DELIMITER ;
