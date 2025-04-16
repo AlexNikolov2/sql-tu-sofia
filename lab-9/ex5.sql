@@ -1,4 +1,4 @@
-DELIMETER $$
+DELIMITER $$
 
 CREATE PROCEDURE get_coaches_by_sport(IN sport_name VARCHAR(255))
 BEGIN
