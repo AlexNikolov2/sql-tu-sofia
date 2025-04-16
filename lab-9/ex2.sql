@@ -1,5 +1,8 @@
+use school_sport_clubs;
+
 DELIMITER $$
 
+DROP TRIGGER IF EXISTS trg_check_student_groups;
 CREATE TRIGGER trg_check_student_groups
 BEFORE INSERT ON student_sport
 FOR EACH ROW
@@ -16,3 +19,9 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+INSERT INTO student_sport (student_id, sportGroup_id) VALUES (4, 1);
+
+INSERT INTO student_sport (student_id, sportGroup_id) VALUES (2, 2);
+
+INSERT INTO student_sport (student_id, sportGroup_id) VALUES (1, 3);
